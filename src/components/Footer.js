@@ -15,9 +15,9 @@ function Footer() {
             </p>
 
             <div className="social-icons">
-              <a href="#">Facebook</a>
-              <a href="#">Twitter</a>
-              <a href="#">LinkedIn</a>
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             </div>
           </div>
 
@@ -52,7 +52,6 @@ function Footer() {
         </div>
       </footer>
 
-      {/* Internal CSS */}
       <style>{`
         .footer {
           background: black;
@@ -151,7 +150,6 @@ function Footer() {
           opacity: 0.8;
         }
 
-        /* Animations */
         @keyframes fadeInUp {
           from {
             transform: translateY(20px);
@@ -163,7 +161,6 @@ function Footer() {
           }
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
           .footer-container {
             flex-direction: column;
