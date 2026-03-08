@@ -15,9 +15,9 @@ function Footer() {
             </p>
 
             <div className="social-icons">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              <button>Facebook</button>
+              <button>Twitter</button>
+              <button>LinkedIn</button>
             </div>
           </div>
 
@@ -32,7 +32,7 @@ function Footer() {
             </ul>
           </div>
 
-          {/* Right Section (Map) */}
+          {/* Right Section */}
           <div className="footer-map">
             <h3>Our Location</h3>
             <iframe
@@ -45,6 +45,7 @@ function Footer() {
               loading="lazy"
             ></iframe>
           </div>
+
         </div>
 
         <div className="footer-bottom">
@@ -91,14 +92,16 @@ function Footer() {
           gap: 15px;
         }
 
-        .social-icons a {
-          text-decoration: none;
+        .social-icons button {
+          background: none;
+          border: none;
           color: white;
           font-size: 14px;
+          cursor: pointer;
           transition: 0.3s;
         }
 
-        .social-icons a:hover {
+        .social-icons button:hover {
           color: #ffd700;
           transform: translateY(-3px);
         }
