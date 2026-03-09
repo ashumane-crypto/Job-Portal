@@ -2,6 +2,7 @@
   "name": "job-portal",
   "version": "1.0.0",
   "private": true,
+  "homepage": "https://ashumane-crypto.github.io/Job-Portal",
   "dependencies": {
     "firebase": "^10.14.1",
     "framer-motion": "^10.16.4",
@@ -14,6 +15,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "CI=false react-scripts build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -34,5 +37,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
   }
 }
