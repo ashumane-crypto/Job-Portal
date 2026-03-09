@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.js": "/Job-Portal/static/js/main.bb736e22.js",
+    "static/media/designhub.jpg": "/Job-Portal/static/media/designhub.9951a0b04210a826c618.jpg",
+    "static/media/datascience.jpg": "/Job-Portal/static/media/datascience.300fa84446f8c0a55291.jpg",
+    "static/media/marketing.avif": "/Job-Portal/static/media/marketing.8990c0d4b5c26f554ac1.avif",
+    "static/media/engineering.webp": "/Job-Portal/static/media/engineering.b35c1f6f30bd14b2158d.webp",
+    "static/media/finance.webp": "/Job-Portal/static/media/finance.45e8bd45d16cdccbc5d2.webp",
+    "static/media/sales.jpg": "/Job-Portal/static/media/sales.243b0f44eb545455530f.jpg",
+    "static/media/data.avif": "/Job-Portal/static/media/data.79c33ff5f3dd7d21cbc6.avif",
+    "static/media/design.jpg": "/Job-Portal/static/media/design.3fa3b291fba5004ab820.jpg",
+    "static/media/financefirst.png": "/Job-Portal/static/media/financefirst.890a498c870c4afdba54.png",
+    "static/media/support.avif": "/Job-Portal/static/media/support.49f55abe20e5eef77643.avif",
+    "index.html": "/Job-Portal/index.html",
+    "main.bb736e22.js.map": "/Job-Portal/static/js/main.bb736e22.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.bb736e22.js"
+  ]
+}
