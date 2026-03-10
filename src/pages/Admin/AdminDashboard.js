@@ -6,6 +6,7 @@ function AdminDashboard(){
 
 const [users,setUsers] = useState([]);
 const [applications,setApplications] = useState([]);
+const [acceptedCount,setAcceptedCount] = useState(0); // NEW
 const [activeTab,setActiveTab] = useState("users");
 const [loading,setLoading] = useState(true);
 
@@ -35,6 +36,11 @@ id,
 }));
 
 setApplications(apps);
+
+// COUNT ACCEPTED APPLICATIONS
+const accepted = apps.filter(app => app.status === "accepted").length;
+setAcceptedCount(accepted);
+
 }
 
 }catch(error){
@@ -63,9 +69,15 @@ status:"accepted"
 
 alert("Application Accepted");
 
-setApplications(applications.map(app =>
+const updatedApps = applications.map(app =>
 app.id === id ? {...app,status:"accepted"} : app
-));
+);
+
+setApplications(updatedApps);
+
+// UPDATE COUNT
+const accepted = updatedApps.filter(app => app.status === "accepted").length;
+setAcceptedCount(accepted);
 
 }catch(error){
 console.log(error);
@@ -87,9 +99,15 @@ status:"rejected"
 
 alert("Application Rejected");
 
-setApplications(applications.map(app =>
+const updatedApps = applications.map(app =>
 app.id === id ? {...app,status:"rejected"} : app
-));
+);
+
+setApplications(updatedApps);
+
+// UPDATE COUNT
+const accepted = updatedApps.filter(app => app.status === "accepted").length;
+setAcceptedCount(accepted);
 
 }catch(error){
 console.log(error);
@@ -136,6 +154,13 @@ return(
 <div className="stat-card">
 <h3>Total Applications</h3>
 <p>{applications.length}</p>
+</div>
+
+{/* NEW CARD */}
+
+<div className="stat-card">
+<h3>Selected Candidates</h3>
+<p>{acceptedCount}</p>
 </div>
 
 </div>
