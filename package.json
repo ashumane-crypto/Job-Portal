@@ -2,7 +2,7 @@
   "name": "job-portal",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://ashumane-crypto.github.io/Job-Portal",
+  "homepage": ".",
   "dependencies": {
     "firebase": "^10.14.1",
     "framer-motion": "^10.16.4",
