@@ -8,6 +8,9 @@ function Profile() {
   const [userData, setUserData] = useState({});
   const [editMode, setEditMode] = useState(false);
 
+  // ✅ NEW STATE FOR APPLICATIONS
+  const [applications, setApplications] = useState([]);
+
   const user = auth.currentUser;
 
   useEffect(() => {
@@ -20,6 +23,25 @@ function Profile() {
 
         if (snapshot.exists()) {
           setUserData(snapshot.val());
+        }
+
+      });
+
+      // ✅ FETCH APPLICATIONS
+      const appRef = ref(db, "applications");
+
+      get(appRef).then((snapshot) => {
+
+        if (snapshot.exists()) {
+
+          const data = snapshot.val();
+
+          const userApps = Object.values(data).filter(
+            (app) => app.email === user.email
+          );
+
+          setApplications(userApps);
+
         }
 
       });
@@ -127,7 +149,6 @@ function Profile() {
               style={styles.input}
             />
 
-
             <label>Email</label>
             <input
               name="email"
@@ -135,7 +156,6 @@ function Profile() {
               disabled
               style={styles.input}
             />
-
 
             <label>Phone</label>
             <input
@@ -146,7 +166,6 @@ function Profile() {
               style={styles.input}
             />
 
-
             <label>Location</label>
             <input
               name="location"
@@ -155,7 +174,6 @@ function Profile() {
               disabled={!editMode}
               style={styles.input}
             />
-
 
             <label>Skills</label>
             <input
@@ -166,7 +184,6 @@ function Profile() {
               style={styles.input}
             />
 
-
             <label>Experience</label>
             <input
               name="experience"
@@ -175,7 +192,6 @@ function Profile() {
               disabled={!editMode}
               style={styles.input}
             />
-
 
             <label>Education</label>
             <input
@@ -186,7 +202,6 @@ function Profile() {
               style={styles.input}
             />
 
-
             <label>Portfolio</label>
             <input
               name="portfolio"
@@ -195,7 +210,6 @@ function Profile() {
               disabled={!editMode}
               style={styles.input}
             />
-
 
             <label>LinkedIn</label>
             <input
@@ -206,7 +220,6 @@ function Profile() {
               style={styles.input}
             />
 
-
             <label>About</label>
             <textarea
               name="about"
@@ -216,54 +229,81 @@ function Profile() {
               style={styles.input}
             />
 
-
-            {/* Resume Button */}
+            {/* Resume */}
             <label>Resume</label>
 
             {userData.resume ? (
-
-              <button
-                style={styles.resumeBtn}
-                onClick={openResume}
-              >
+              <button style={styles.resumeBtn} onClick={openResume}>
                 View Resume
               </button>
-
             ) : (
-
               <p>No Resume Uploaded</p>
-
             )}
-
 
             {/* Buttons */}
             <div style={styles.buttonGroup}>
 
               {!editMode && (
-
-                <button
-                  style={styles.editBtn}
-                  onClick={() => setEditMode(true)}
-                >
+                <button style={styles.editBtn} onClick={() => setEditMode(true)}>
                   Edit Profile
                 </button>
-
               )}
 
               {editMode && (
-
-                <button
-                  style={styles.saveBtn}
-                  onClick={handleUpdate}
-                >
+                <button style={styles.saveBtn} onClick={handleUpdate}>
                   Save Changes
                 </button>
-
               )}
 
             </div>
 
           </div>
+
+        </div>
+
+        {/* ✅ NEW SECTION: APPLIED JOBS */}
+        <div style={styles.appliedSection}>
+
+          <h2>Applied Jobs</h2>
+
+          {applications.length === 0 ? (
+
+            <p>No Applications Yet</p>
+
+          ) : (
+
+            <div style={styles.jobGrid}>
+
+              {applications.map((app, index) => (
+
+                <div key={index} style={styles.jobCard}>
+
+                  <h3>{app.jobTitle}</h3>
+                  <p>{app.company}</p>
+
+                  <p>
+                    Status: 
+                    <span style={{
+                      color:
+                        app.status === "accepted"
+                          ? "green"
+                          : app.status === "rejected"
+                          ? "red"
+                          : "orange",
+                      fontWeight:"bold",
+                      marginLeft:"5px"
+                    }}>
+                      {app.status}
+                    </span>
+                  </p>
+
+                </div>
+
+              ))}
+
+            </div>
+
+          )}
 
         </div>
 
@@ -372,6 +412,25 @@ const styles = {
     border:"none",
     borderRadius:"6px",
     cursor:"pointer"
+  },
+
+  /* ✅ NEW STYLES */
+  appliedSection:{
+    marginTop:"40px"
+  },
+
+  jobGrid:{
+    display:"grid",
+    gridTemplateColumns:"repeat(auto-fit,minmax(250px,1fr))",
+    gap:"20px",
+    marginTop:"20px"
+  },
+
+  jobCard:{
+    background:"#f9fafb",
+    padding:"15px",
+    borderRadius:"10px",
+    boxShadow:"0 5px 15px rgba(0,0,0,0.05)"
   }
 
 };
